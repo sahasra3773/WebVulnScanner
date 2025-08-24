@@ -1,0 +1,49 @@
+{
+  "target": "http://testphp.vulnweb.com/",
+  "count": 6,
+  "vulnerabilities": [
+    {
+      "name": "SQL Injection",
+      "description": "DB error after POST form submit.",
+      "severity": "High",
+      "evidence": "searchFor=' UNION SELECT NULL--",
+      "location": "http://testphp.vulnweb.com/search.php?test=query"
+    },
+    {
+      "name": "SQL Injection",
+      "description": "DB error after POST form submit.",
+      "severity": "High",
+      "evidence": "searchFor=admin'--",
+      "location": "http://testphp.vulnweb.com/search.php?test=query"
+    },
+    {
+      "name": "Cross-Site Scripting (XSS)",
+      "description": "Reflected payload after POST form submit.",
+      "severity": "Medium",
+      "evidence": "searchFor=<script>alert(1)</script>",
+      "location": "http://testphp.vulnweb.com/search.php?test=query"
+    },
+    {
+      "name": "Cross-Site Scripting (XSS)",
+      "description": "Reflected payload after POST form submit.",
+      "severity": "Medium",
+      "evidence": "searchFor=\" onmouseover=\"alert(1)",
+      "location": "http://testphp.vulnweb.com/search.php?test=query"
+    },
+    {
+      "name": "Cross-Site Scripting (XSS)",
+      "description": "Reflected payload after POST form submit.",
+      "severity": "Medium",
+      "evidence": "searchFor=<img src=x onerror=alert(1)>",
+      "location": "http://testphp.vulnweb.com/search.php?test=query"
+    },
+    {
+      "name": "Possible CSRF Missing Token",
+      "description": "POST form without an apparent CSRF token (heuristic).",
+      "severity": "Low",
+      "evidence": "fields=['searchFor', 'goButton']",
+      "location": "http://testphp.vulnweb.com/search.php?test=query"
+    }
+  ],
+  "generated_at": "20250821-001133"
+}

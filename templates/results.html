@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scan Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #2c3e50; }
+        table { border-collapse: collapse; width: 100%; }
+        td, th { border: 1px solid #ccc; padding: 10px; }
+        th { background-color: #f4f4f4; }
+        .no-vulns { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Scan Results for {{ url }}</h1>
+
+    {% if vulnerabilities and vulnerabilities|length > 0 %}
+        <table>
+            <tr><th>Name</th><th>Description</th><th>Severity</th><th>Evidence</th><th>Location</th></tr>
+            {% for v in vulnerabilities %}
+            <tr>
+                <td>{{ v.name }}</td>
+                <td>{{ v.description }}</td>
+                <td>{{ v.severity }}</td>
+                <td>{{ v.evidence }}</td>
+                <td>{{ v.location }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <p>Report saved at: <b>{{ report_path }}</b></p>
+    {% else %}
+        <p class="no-vulns">✅ No vulnerabilities found.</p>
+    {% endif %}
+
+    <br>
+    <a href="/">🔙 Go Back</a>
+</body>
+</html>
