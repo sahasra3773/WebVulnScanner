@@ -22,7 +22,7 @@ text
 
 ## Usage
 Explain how to run the tool or use the project here. Example:
-python scanner.py --url http://example.com
+python scanner.py --url scanner.py
 
 text
 
